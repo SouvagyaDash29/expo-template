@@ -50,7 +50,7 @@ Join our community of developers creating universal apps.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
 
 ## To run the project go through below instruction
-# when you have face any issues then conctact repository owner 👋
+# when you have face any issues, then conctact repository owner 👋
 
 Install dependencies
 
