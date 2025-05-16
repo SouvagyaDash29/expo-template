@@ -48,3 +48,68 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+## To run the project go through below instruction
+
+Install dependencies
+
+ ```bash
+   npm i @react-native-community/netinfo
+   ```
+ ```bash
+   npm i react-native-element-dropdown
+   ```
+
+Add Files( first only copy paste then modify according to your need )
+
+- [AuthScreen/index.js](https://github.com/SouvagyaDash29/expo-template/blob/main/app/AuthScreen/index.js)
+- [PinScreen/index.js](https://github.com/SouvagyaDash29/expo-template/blob/main/app/PinScreen/index.js)
+- [src/screens/ChangePassword.js](https://github.com/SouvagyaDash29/expo-template/blob/main/src/screens/ChangePassword.js)
+
+Add Files
+- [src/components/Modals.js](https://github.com/SouvagyaDash29/expo-template/blob/main/src/components/Modals.js)
+- [src/components/CompanyDropdown.js](https://github.com/SouvagyaDash29/expo-template/blob/main/src/components/CompanyDropdown.js)
+- [src/components/ConfirmationModal.js](https://github.com/SouvagyaDash29/expo-template/blob/main/src/components/ConfirmationModal.js)
+- [src/components/NetworkErrorModal.js](https://github.com/SouvagyaDash29/expo-template/blob/main/src/components/NetworkErrorModal.js)
+
+Only Copy and paste
+- [src/services/HttpMethod.js](https://github.com/SouvagyaDash29/expo-template/blob/main/src/services/HttpMethod.js)
+- [src/services/HttpMethod.js](https://github.com/SouvagyaDash29/expo-template/blob/main/src/services/HttpMethod.js)
+- [src/services/authServices.js](https://github.com/SouvagyaDash29/expo-template/blob/main/src/services/authServices.js)
+- [src/services/localStore.js](https://github.com/SouvagyaDash29/expo-template/blob/main/src/services/localStore.js)
+- [src/services/productServices.js](https://github.com/SouvagyaDash29/expo-template/blob/main/src/services/productServices.js)
+in src/services/productServices.js copy from line 101.
+
+
+Modify in ConstantServices.js
+ ```bash
+   const getDbName = async () => {
+  let dbName = await AsyncStorage.getItem('dbName');
+  return dbName;
+}
+const db_name = getDbName();
+   ```
+
+ ```bash
+   export const userLoginURL = async () => {
+  const db_name = await getDbName();
+   return `${endpoint}/customer_user_login/${db_name}/`;
+}
+
+export const setUserPinURL =  async () => {
+  const db_name = await getDbName();
+  return `${endpoint}/set_user_pin/${db_name}/`;
+} 
+
+export const profileInfoURL = async () => {
+   const db_name = await getDbName();
+  return  `${endpoint}/profile_info/${db_name}/`;
+}
+
+export const getDbList = `${endpoint}/get_applicable_site/`;
+   ```
+if you add new api then follow above structure.
+
+
+
+# If you have any issues then conctact repository owner 👋
