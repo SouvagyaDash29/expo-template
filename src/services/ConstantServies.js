@@ -29,7 +29,7 @@ export const addressCreateURL = `${endpoint}/address/create/${db_name}/`;
 export const addressUpdateURL = id => `${endpoint}/address/update/${db_name}/${id}/`;
 export const addressDeleteURL = id => `${endpoint}/address/delete/${db_name}/${id}/`;
 export const userSignUpURL = `${endpoint}/customer_sign_up/${db_name}/`;
-export const userLoginURL = `${endpoint}/customer_login/${db_name}/`;
+// export const userLoginURL = `${endpoint}/customer_login/${db_name}/`;
 export const loginURL = `${localhost}/rest-auth/login/`;
 export const resetPasswordURL = `${endpoint}/reset_password/${db_name}/`;
 export const resetPasswordConfirmURL = `${endpoint}/reset_password_confirm/`;
@@ -42,7 +42,7 @@ export const getCustomerDetailListURL = `${endpoint}/customer_detail_list/${db_n
 export const getLeadListURL = `${endpoint}/lead_list/${db_name}/`;
 export const getLeadDataListURL = `${endpoint}/lead_data_list/${db_name}/`;
 export const addTaskURL = `${endpoint}/add_task/${db_name}/`;
-export const profileInfoURL = `${endpoint}/profile_info/${db_name}/`;
+// export const profileInfoURL = `${endpoint}/profile_info/${db_name}/`;
 export const companyInfoURL = `${endpoint}/company_info/${db_name}/`;
 export const getTaskInterestListURL = `${endpoint}/task_interest_list/${db_name}/`;
 export const getProductCategoryListURL = `${endpoint}/product_category_list/${db_name}/`;
@@ -65,3 +65,21 @@ export const getEmpAttendanceData = `${endpoint}/get_employee_attendance/${db_na
 export const getEmpHolidayData = `${endpoint}/get_holiday_data/${db_name}/`;
 export const empCheckData = `${endpoint}/process_employee_attendance/${db_name}/`;
 export const getClaimApproverList = `${endpoint}/get_claim_approve_list/${db_name}/`;
+
+
+export const userLoginURL = async () => {
+  const db_name = await getDbName();
+   return `${endpoint}/customer_user_login/${db_name}/`;
+}
+
+export const setUserPinURL =  async () => {
+  const db_name = await getDbName();
+  return `${endpoint}/set_user_pin/${db_name}/`;
+} 
+
+export const profileInfoURL = async () => {
+   const db_name = await getDbName();
+  return  `${endpoint}/profile_info/${db_name}/`;
+}
+
+export const getDbList = `${endpoint}/get_applicable_site/`;

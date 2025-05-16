@@ -1,5 +1,6 @@
-import { addEmpLeave, getEmpLeavedata, addClaim, getEmpClaimdata, getExpenseItemList, getProjectList, getEmpAttendanceData, getEmpHolidayData, empCheckData, processClaim, getClaimApproverList } from "../services/ConstantServies";
-import { authAxios, authAxiosFilePost, authAxiosPost } from "./HttpMethod";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { addEmpLeave, getEmpLeavedata, addClaim, getEmpClaimdata, getExpenseItemList, getProjectList, getEmpAttendanceData, getEmpHolidayData, empCheckData, processClaim, getClaimApproverList, userLoginURL, setUserPinURL } from "../services/ConstantServies";
+import { authAxios, authAxiosFilePost, authAxiosPost, authAxiosPosts } from "./HttpMethod";
 
 export function getEmpLeave(leave_type , emp_id, year) {
     let data = {};
@@ -95,3 +96,39 @@ export function getEmpLeave(leave_type , emp_id, year) {
     // console.log('Data to be sent:', data);
     return authAxiosPost(empCheckData, data)
   }
+
+    //Customer Login
+export async function customerLogin(payload) {
+  const url = await userLoginURL(); 
+  let data = payload;
+  return authAxiosPosts(url, data);
+}
+
+export async function setUserPinView(o_pin, n_pin) {
+  const url = await setUserPinURL();
+  try {
+    const customerId = await AsyncStorage.getItem("Customer_id");
+    let customerIdNumber = parseInt(customerId, 10);
+
+    if (isNaN(customerIdNumber)) {
+      throw new Error("Invalid Customer ID: " + customerId);
+    }
+
+    const effectiveCustomerId = customerIdNumber;
+
+    let data = {
+      u_id: effectiveCustomerId,
+      o_pin: o_pin,
+      n_pin: n_pin,
+      user_type: "CUSTOMER",
+    };
+
+    // console.log("Sending request to API with data:", data);
+    const response = await authAxiosPost(url, data);
+    console.log("API Response:", response);
+    return response;
+  } catch (error) {
+    console.error("Error in setUserPinView:", error.response ? error.response.data : error.message);
+    throw error;
+  }
+} 
